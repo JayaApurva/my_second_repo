@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Resource {
+  id               String          @id @default(uuid())
+  challengeId      String?
+  memberId         String?
+  memberHandle     String?
+  roleId           String
+  created          DateTime        @default(now())
+  createdBy        String
+  updated          DateTime        @updatedAt
+  updatedBy        String?
+  legacyId         String?
+
+  // Relationships
+  role             Role            @relation(fields: [roleId], references: [id])
+  resourcePhases   ResourcePhase[]
+  
+  @@index([challengeId])
+  @@index([memberId])
+}
+
+model Role {
+  id               String          @id @default(uuid())
+  name             String          @unique
+  fullAccess       Boolean         @default(false)
+  selfObtainable   Boolean         @default(false)
+  created          DateTime        @default(now())
+  createdBy        String
+  updated          DateTime        @updatedAt
+  updatedBy        String?
+  legacyId         String?
+
+  // Relationships
+  resources        Resource[]
+}
+
+model Phase {
+  id               String          @id @default(uuid())
+  name             String          @unique
+  description      String?
+  created          DateTime        @default(now())
+  createdBy        String
+  updated          DateTime        @updatedAt
+  updatedBy        String?
+
+  // Relationships
+  resourcePhases   ResourcePhase[]
+}
+
+model ResourcePhase {
+  id               String          @id @default(uuid())
+  resourceId       String
+  phaseId          String
+  created          DateTime        @default(now())
+  createdBy        String
+  updated          DateTime        @updatedAt
+  updatedBy        String?
+
+  // Relationships
+  resource         Resource        @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  phase            Phase           @relation(fields: [phaseId], references: [id])
+
+  @@unique([resourceId, phaseId])
+}

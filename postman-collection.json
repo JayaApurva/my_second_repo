@@ -1,0 +1,557 @@
+{
+  "info": {
+    "_postman_id": "a123456-7890-abcd-efgh-123456789012",
+    "name": "Topcoder Resources API",
+    "description": "Postman collection for testing the Topcoder Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Get All Roles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resource-roles",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-roles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Role By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resource-roles/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-roles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{ROLE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test Role\",\n  \"fullAccess\": false,\n  \"selfObtainable\": true,\n  \"createdBy\": \"test\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resource-roles",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-roles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Role",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Test Role\",\n  \"updatedBy\": \"test\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resource-roles/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-roles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{ROLE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Role",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resource-roles/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-roles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{ROLE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Phases",
+      "item": [
+        {
+          "name": "Get All Phases",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resource-phases",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-phases"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Phase By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resource-phases/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-phases", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{PHASE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Phase",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test Phase\",\n  \"description\": \"A test phase\",\n  \"createdBy\": \"test\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resource-phases",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-phases"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Phase",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated test phase description\",\n  \"updatedBy\": \"test\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resource-phases/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-phases", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{PHASE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Phase",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resource-phases/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resource-phases", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{PHASE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Resources",
+      "item": [
+        {
+          "name": "Get All Resources",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resources?includeRole=true&includePhases=true",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources"],
+              "query": [
+                {
+                  "key": "includeRole",
+                  "value": "true"
+                },
+                {
+                  "key": "includePhases",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Resource By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resources/:id?includeRole=true&includePhases=true",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources", ":id"],
+              "query": [
+                {
+                  "key": "includeRole",
+                  "value": "true"
+                },
+                {
+                  "key": "includePhases",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{RESOURCE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"challengeId\": \"123456\",\n  \"memberId\": \"789012\",\n  \"memberHandle\": \"testuser\",\n  \"roleId\": \"{{ROLE_ID}}\",\n  \"createdBy\": \"test\",\n  \"phases\": [\"{{PHASE_ID}}\"]\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resources",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Resource",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"memberHandle\": \"updatetestuser\",\n  \"updatedBy\": \"test\",\n  \"phases\": [\"{{PHASE_ID}}\"]\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resources/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{RESOURCE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Resource",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resources/:id",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{RESOURCE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Resource Phases",
+      "item": [
+        {
+          "name": "Get Resource Phases",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resources/:resourceId/phases",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources", ":resourceId", "phases"],
+              "variable": [
+                {
+                  "key": "resourceId",
+                  "value": "{{RESOURCE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Phase to Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phaseIds\": [\"{{PHASE_ID}}\"]\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/resources/:resourceId/phases",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources", ":resourceId", "phases"],
+              "variable": [
+                {
+                  "key": "resourceId",
+                  "value": "{{RESOURCE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Phase from Resource",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resources/:resourceId/phases/:phaseId",
+              "host": ["{{BASE_URL}}"],
+              "path": ["resources", ":resourceId", "phases", ":phaseId"],
+              "variable": [
+                {
+                  "key": "resourceId",
+                  "value": "{{RESOURCE_ID}}"
+                },
+                {
+                  "key": "phaseId",
+                  "value": "{{PHASE_ID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:3000/v5",
+      "type": "string"
+    },
+    {
+      "key": "TOKEN",
+      "value": "your-auth-token-here",
+      "type": "string"
+    },
+    {
+      "key": "ROLE_ID",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key":
