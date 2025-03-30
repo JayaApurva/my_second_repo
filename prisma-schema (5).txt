@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  challengeId String
+  memberId    String
+  roleId      String
+  created     DateTime @default(now())
+  updated     DateTime @updatedAt
+  createdBy   String
+  updatedBy   String?
+  deleted     Boolean  @default(false)
+
+  // Define relationships if needed
+  @@index([challengeId])
+  @@index([memberId])
+  @@index([roleId])
+}
+
+model ResourceRole {
+  id           String   @id
+  name         String
+  nameLower    String
+  legacyId     Int?
+  fullAccess   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  selfObtainable Boolean @default(false)
+  created      DateTime @default(now())
+  updated      DateTime @updatedAt
+  createdBy    String
+  updatedBy    String?
+}
+
+model ResourceRolePhaseDependency {
+  id             String   @id @default(uuid())
+  resourceRoleId String
+  phaseId        String
+  phaseType      String?
+  created        DateTime @default(now())
+  updated        DateTime @updatedAt
+  createdBy      String
+  updatedBy      String?
+
+  @@index([resourceRoleId])
+  @@index([phaseId])
+}
